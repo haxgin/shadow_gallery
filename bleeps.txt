@@ -37,8 +37,8 @@ cme smb -u <username> -p <password> -d <domain> <IP> --lsa
 cme smb -u <username> -p <password> -d <domain> <IP> --shares
 cme smb -u <username> -p <password> -d <domain> <IP> --sessions
 cme smb -u <username> -p <password> -d <domain> <IP> --loggedon-users
-cme smb -u <username> -p <password> -d <domain> <IP> -x '<cmd command>
-cme smb -u <username> -p <password> -d <domain> <IP> -X <powershell command>
+cme smb -u <username> -p <password> -d <domain> <IP> -x '<cmd command>'
+cme smb -u <username> -p <password> -d <domain> <IP> -X '<powershell command>'
 
 **CS**
 --------------------
@@ -46,6 +46,11 @@ cme smb -u <username> -p <password> -d <domain> <IP> -X <powershell command>
 
 **BloodH**
 --------------------
+	- Powershell-import Blood
+	- Powerpick Invoke-BloodHound -CollectionMethod  Session -LoopDelay 120 MaxLoopTime 0d0h10m0s
+	- powerpick Invoke-BloodHound --CollectionMethod  DCOnly --NoSaveCache --RandomFilenames --EncryptZip
+	- Powerpick Invoke-BloodHound --CollectionMethod ACLs
+  - Download Bloodhound.zip
 
 **Burp**
 --------------------
@@ -53,6 +58,7 @@ java -jar -Xmx2G /path/to/burpsuite.jar --project-file=<name>.burp
 
 Eyewitness
 --------------------
+./EyeWitness.py --headless -d <company_name> -f  ~/path/to/server_file/<file>.txt 
 
 Aquatone
 --------------------
