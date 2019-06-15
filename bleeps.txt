@@ -42,6 +42,7 @@ cme smb -u <username> -p <password> -d <domain> <IP> -X <powershell command>
 
 **CS**
 --------------------
+./teamserver <ip> <password> 2019-MM-DD /path/to/C2/c2.profile
 
 **BloodH**
 --------------------
@@ -63,6 +64,6 @@ Hashcat
 --------------------
 cd hashcat
 ./hashcat -w 2 -O <hashes_to_crack.txt> <wordlist.txt>
-./hashcat -w 2 -O <hashes_to_crack.txt> <wordlist.txt> -r /rules/best64.rule
+./hashcat -w 2 -O -a 3 <hashes_to_crack.txt> <wordlist.txt> -r /rules/best64.rule
 
 
