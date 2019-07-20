@@ -40,6 +40,10 @@ cme smb -u <username> -p <password> -d <domain> <IP> --loggedon-users
 cme smb -u <username> -p <password> -d <domain> <IP> -x '<cmd command>'
 cme smb -u <username> -p <password> -d <domain> <IP> -X '<powershell command>'
 
+**Gobuster**
+--------------------
+gobuster dir --url <URL> -w </path/to/wordlist/> -x .php,.txt,.html -s "200" -t 30 -o go_output.txt
+
 **CS**
 --------------------
 ./teamserver <ip> <password> 2019-MM-DD /path/to/C2/c2.profile
