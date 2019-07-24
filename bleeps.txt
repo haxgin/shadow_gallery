@@ -72,7 +72,15 @@ cat <list_of_servers.txt> | aquatone
 
 Hashcat
 --------------------
-cd hashcat
+<-Hash Types->
+Kerberos 5 TGS-REP etype 17 (AES128-CTS-HMAC-SHA1-96) --> -m 19600
+Kerberos 5 TGS-REP etype 18 (AES256-CTS-HMAC-SHA1-96) --> -m 19700
+Kerberos 5 TGS-REP etype 23 (RC4-HMAC-MD5) --> -m 13100
+
+NTLM --> 1000
+NTLMV1 --> -m 5500
+NTLMV2 --> -m 5600
+
 ./hashcat -w 2 -O <hashes_to_crack.txt> <wordlist.txt>
 ./hashcat -w 2 -O -a 3 <hashes_to_crack.txt> <wordlist.txt> -r /rules/best64.rule
 
