@@ -8,5 +8,3 @@ This repo contains the following:
 2) bleeps.txt
 -> Common commands needed for pwnage
 
-3)resources.txt
--> 
