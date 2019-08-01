@@ -35,6 +35,12 @@ Rules for Hashcat
 Dead Hobo - https://github.com/praetorian-code/Hob0Rules
 The One Rule - https://github.com/NotSoSecure/password_cracking_rules
 
+BH - Powersploit - Ghostpack
+----------------
+BloodHound Ingestors - https://github.com/BloodHoundAD/BloodHound/tree/master/Ingestors
+Powersploit - https://github.com/PowerShellMafia/PowerSploit
+Ghostpack - https://github.com/GhostPack
+
 Phish Pays    
 ---------------
 Cactus - https://github.com/mdsecactivebreach/CACTUSTORCH
