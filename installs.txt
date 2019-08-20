@@ -4,6 +4,12 @@ Server Setup
 ---------------
 1) git clone https://github.com/noahpowers/ServerSetup
 
+Cobalt Strike - OpenJDK 11
+---------------
+1) sudo apt-get update
+2) sudo apt-get install openjdk-11-jdk
+3) sudo update-java-alternatives -s java-1.11.0-openjdk-amd64
+
 Gobuster
 ---------------
 sudo apt-get install gobuster
