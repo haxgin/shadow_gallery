@@ -21,6 +21,36 @@ Sublime Text
 3)sudo apt-get update
 4)sudo apt-get install sublime-text
 
+Scoutsuite
+--------------
+1) git clone https://github.com/nccgroup/ScoutSuite
+2) cd ScoutSuite
+3) virtualenv -p python3 venv
+4) source venv/bin/activate
+5) pip install -r requirements.txt
+6) python scout.py --help
+
+On Kali - create the following directory in your root directory: mkdir ~./aws
+
+In this directory, create a file called "credentials"
+This file should contain the following:
+
+[TESTQuery]
+aws_access_key_id = <KEY ID>
+aws_secret_access_key = <SECRET KEY>
+
+To run scoutsuite, run the following:
+python scout.py aws --profile TESTQuery
+
+This will create a .html report of the AWS instance
+
+BloodHound
+--------------
+1) cd /opt/
+2) git clone https://github.com/noahpowers/ServerSetup
+3) chmod +x Install-Run-BloodHound.sh
+4) apt-get install bloodhound
+
 CME
 -----
 1) cd /opt/
