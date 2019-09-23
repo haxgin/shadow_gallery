@@ -4,6 +4,19 @@
 ---------------------
 mount -t cifs //<ip>//<share name/ /mnt/share -o username=<username>
 
+**SOCATS**
+------------------------
+On Kali:
+	Setup Proxychains to leverage pivot on PID 6336
+		socks4 64.69.57.203 9001
+	Setup socat through proxychains so it takes RDP requests and pushes them to the end victim
+		proxychains socat TCP-LISTEN:3389,fork TCP4:10.3.7.86:3389
+	Obtain IP address of local Kali system
+
+On Attacker-Windows system:
+	Open RDP and RDP w/ valid victim credentials to the IP of your Kali system
+	Done!
+
 **Nmap**
 --------------------
 ###From @killswitch-GUI :: 
@@ -84,6 +97,8 @@ impacket-wmiexec <domain>/<user>@<IP> -hashes ":<hash>
 - shell net localgroups "<groupname>"
 - shell net group "Domain Admins"
 - shell net group "<group>" /domain | find /I "<name>"
+- shell dir /s /b "Groups.xml"
+- shell dir /s /b "Unattend.xml
 - shell whoami /all
 - shell systeminfo
 - shell netstat -ano
@@ -108,21 +123,21 @@ impacket-wmiexec <domain>/<user>@<IP> -hashes ":<hash>
 
 **Burp**
 --------------------
-java -jar -Xmx2G /path/to/burpsuite.jar --project-file=<name>.burp
+- java -jar -Xmx2G /path/to/burpsuite.jar --project-file=<name>.burp
 
 **Gobuster**
 --------------------
-gobuster dir --url <URL> -w </path/to/wordlist/> -x .php,.txt,.html -s "200" -t 30 -o go_output.txt
+- gobuster dir --url <URL> -w </path/to/wordlist/> -x .php,.txt,.html -s "200" -t 30 -o go_output.txt
 
 Eyewitness
 --------------------
-./EyeWitness.py --headless -d <company_name> -f  ~/path/to/server_file/<file>.txt 
+- ./EyeWitness.py --headless -d <company_name> -f  ~/path/to/server_file/<file>.txt 
 
 Aquatone
 --------------------
-wget https://github.com/michenriksen/aquatone/releases/download/v1.7.0/aquatone_linux_amd64_1.7.0.zip
-unzip aquatone_linux_amd64_1.7.0.zip
-cat <list_of_servers.txt> | aquatone 
+- wget https://github.com/michenriksen/aquatone/releases/download/v1.7.0/aquatone_linux_amd64_1.7.0.zip
+- unzip aquatone_linux_amd64_1.7.0.zip
+- cat <list_of_servers.txt> | aquatone 
 
 Hashcat
 --------------------
@@ -135,5 +150,5 @@ NTLM --> 1000
 NTLMV1 --> -m 5500
 NTLMV2 --> -m 5600
 
-./hashcat -w 2 -O -a 0 -m <hash type> <hashes_to_crack.txt> <wordlist.txt>
-./hashcat -w 2 -O -a 0 -m <hash type> <hashes_to_crack.txt> <wordlist.txt> -r /rules/best64.rule
+- ./hashcat -w 2 -O -a 0 -m <hash type> <hashes_to_crack.txt> <wordlist.txt>
+- ./hashcat -w 2 -O -a 0 -m <hash type> <hashes_to_crack.txt> <wordlist.txt> -r /rules/best64.rule
