@@ -7,7 +7,7 @@ Server Setup
 Cobalt Strike - OpenJDK 11
 ---------------
 1) sudo apt-get update
-2) Download the following into your root directory (an Oracle account is required):      ----     -  
+2) Download the following into your root directory (an Oracle account is required): 
    ->https://download.oracle.com/otn/java/jdk/11.0.5+10/e51269e04165492b90fa15af5b4eb1a5/jdk-11.0.5_linux-x64_bin.tar.gz
 3) tar -xzvf jdk-11.0.5_linux-x64_bin.tar.gz
 4) nano ~./bashrc
