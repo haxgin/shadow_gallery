@@ -50,12 +50,10 @@ This will create a .html report of the AWS instance
 
 BloodHound
 --------------
-1) cd /opt/
-2) git clone https://github.com/noahpowers/ServerSetup
--> edit script, replace wget URL with: https://github.com/BloodHoundAD/BloodHound/releases/download/2.2.1/BloodHound-linux-x64.zip
-3) chmod +x Install-Run-BloodHound.sh
-4) apt-get install bloodhound
-5) bloodhound
+1) apt-get install bloodhound
+2) neo4j console
+3) http://localhost:7474
+4) bloodhound
 
 CME
 -----
