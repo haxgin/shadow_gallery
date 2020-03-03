@@ -81,6 +81,13 @@ BloodHound Ingestors - https://github.com/BloodHoundAD/BloodHound/tree/master/In
 Powersploit - https://github.com/PowerShellMafia/PowerSploit
 Ghostpack - https://github.com/GhostPack
 
+Phishing Templates
+-------------------
+In increase mail-tester.com score, remove the following from your template:
+TO: Field
+Date: Field
+User-Agent: Field
+
 Phish Pays    
 ---------------
 Cactus - https://github.com/mdsecactivebreach/CACTUSTORCH
