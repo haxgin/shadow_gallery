@@ -25,6 +25,14 @@ Sublime Text
 3) sudo apt-get update
 4) sudo apt-get install sublime-text
 
+PCredz
+---------------
+1) git clone https://github.com/lgandx/PCredz
+2) sudo apt-get install libpcap-dev
+3) sudo apt-get install python3-pip
+3) pip3 install Cython
+4) pip3 install python-libpcap
+
 Scoutsuite
 --------------
 1) git clone https://github.com/nccgroup/ScoutSuite
