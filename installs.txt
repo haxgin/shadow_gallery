@@ -7,12 +7,8 @@ Server Setup
 Cobalt Strike - OpenJDK 11
 ---------------
 1) sudo apt-get update
-2) Download the following into your root directory (an Oracle account is required): 
-   ->https://download.oracle.com/otn/java/jdk/11.0.5+10/e51269e04165492b90fa15af5b4eb1a5/jdk-11.0.5_linux-x64_bin.tar.gz
-3) tar -xzvf jdk-11.0.5_linux-x64_bin.tar.gz
-4) nano ~./bashrc
-5) (add the following path at the bottom of the bashrc file) export PATH=/root/jdk-11.0.5/bin:$PATH
-6) Logout, and back into account
+2) sudo apt-get install openjdk-11-jdk
+3) sudo update-java-alternatives -s java-1.11.0-openjdk-amd64
 
 Gobuster
 ---------------
@@ -60,17 +56,15 @@ BloodHound
 --------------
 1) apt-get install bloodhound
 2) neo4j console
-3) http://localhost:7474
-4) bloodhound
+3) Open browser, connect to: http://localhost:7474
+4) In new terminal: bloodhound
 
-CME
+CME *Requires Python3*
 -----
 1) cd /opt/
-2) git clone https://github.com/byt3bl33d3r/CrackMapExec
+2) wget https://github.com/byt3bl33d3r/CrackMapExec/releases/download/v5.1.1dev/cme-ubuntu-latest.4.zip
 3) cd CrackMapExec 
-4) git submodule init && git submodule update --recursive
-5) python setup.py install
-6) cme
+4) python3 cme
 
 Impacket
 -------------
